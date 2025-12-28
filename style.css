@@ -1198,7 +1198,12 @@ body {
   /* DESKTOP */
   #desktop {
     padding-top: 20px;
-    padding-top: calc(20px + env(safe-area-inset-top, 0px));
+  }
+  
+  @supports (padding-top: env(safe-area-inset-top)) {
+    #desktop {
+      padding-top: calc(20px + env(safe-area-inset-top));
+    }
   }
 
   .desktop-content {
@@ -1243,9 +1248,14 @@ body {
   /* DOCK */
   .dock {
     bottom: 8px;
-    bottom: calc(8px + env(safe-area-inset-bottom, 0px));
     padding: 6px 10px;
     gap: 6px;
+  }
+  
+  @supports (bottom: env(safe-area-inset-bottom)) {
+    .dock {
+      bottom: calc(8px + env(safe-area-inset-bottom));
+    }
   }
 
   .dock-item {
