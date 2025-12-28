@@ -6,7 +6,7 @@
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
   overflow: hidden;
   background: #000;
   color: #fff;
@@ -525,21 +525,23 @@ body {
 }
 
 /* ==================== SCROLLBAR CUSTOMIZADA ==================== */
-.window-content::-webkit-scrollbar {
-  width: 8px;
-}
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  .window-content::-webkit-scrollbar {
+    width: 8px;
+  }
 
-.window-content::-webkit-scrollbar-track {
-  background: transparent;
-}
+  .window-content::-webkit-scrollbar-track {
+    background: transparent;
+  }
 
-.window-content::-webkit-scrollbar-thumb {
-  background: rgba(0, 0, 0, 0.2);
-  border-radius: 10px;
-}
+  .window-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+  }
 
-.window-content::-webkit-scrollbar-thumb:hover {
-  background: rgba(0, 0, 0, 0.3);
+  .window-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.3);
+  }
 }
 
 /* ==================== RESPONSIVE ==================== */
@@ -1121,7 +1123,7 @@ body {
 
 /* ==================== LAYOUT FIXES ==================== */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
   overflow: hidden;
   background: #000;
   color: #fff;
@@ -1195,7 +1197,8 @@ body {
 
   /* DESKTOP */
   #desktop {
-    padding-top: env(safe-area-inset-top);
+    padding-top: 20px;
+    padding-top: calc(20px + env(safe-area-inset-top, 0px));
   }
 
   .desktop-content {
@@ -1239,7 +1242,8 @@ body {
 
   /* DOCK */
   .dock {
-    bottom: env(safe-area-inset-bottom);
+    bottom: 8px;
+    bottom: calc(8px + env(safe-area-inset-bottom, 0px));
     padding: 6px 10px;
     gap: 6px;
   }
