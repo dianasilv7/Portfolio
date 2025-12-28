@@ -215,7 +215,326 @@ body {
   justify-content: center;
   cursor: pointer;
   transition: all 0.2s ease;
+  border: 1px solid rgba(102, 126, 234, 0.3);
+}
+
+.arrow-btn:hover {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.05);
+}
+
+.arrow-btn:active {
+  transform: scale(0.95);
+}
+
+.social-link:hover {
+  background: rgba(102, 126, 234, 0.2);
+}
+
+.contact-info p {
+  font-size: 14px;
+  color: #86868b;
+  margin-bottom: 8px;
+}
+
+/* ==================== WEBSITES SECTION ==================== */
+.websites-section h4 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 16px;
+  margin-top: 24px;
+}
+
+.websites-links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.website-link {
+  display: flex;
+  align-items: center;
+  padding: 16px;
+  background: rgba(102, 126, 234, 0.05);
+  border: 2px solid rgba(102, 126, 234, 0.1);
+  border-radius: 12px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+.website-link:hover {
+  background: rgba(102, 126, 234, 0.1);
+  border-color: rgba(102, 126, 234, 0.3);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
+}
+
+.website-icon {
+  font-size: 24px;
+  margin-right: 16px;
+  width: 40px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.website-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.website-info h5 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin: 0 0 4px 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.website-info p {
+  font-size: 13px;
+  color: #86868b;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ==================== LAYOUT FIXES ==================== */
+body {
+  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
+  overflow: hidden;
+  background: #000;
   color: #fff;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Force proper box-sizing for all elements */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+.window {
+  width: 90%;
+  max-width: 900px;
+  height: 80%;
+  max-height: 700px;
+  background: rgba(255, 255, 255, 0.98);
+  border-radius: 12px;
+  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+  overflow: hidden;
+  animation: windowOpen 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(40px);
+  margin: 0 auto;
+}
+
+.window-content {
+  height: calc(100% - 40px);
+  overflow-y: auto;
+  padding: 40px;
+  background: #fff;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+/* ==================== MOBILE GLOBAL FIX ==================== */
+@media (max-width: 768px) {
+
+  body {
+    overflow: auto;
+  }
+
+  /* BOOT SCREEN */
+  .boot-content {
+    padding: 30px 20px;
+    width: 90%;
+  }
+
+  .boot-title {
+    font-size: 32px;
+    letter-spacing: 4px;
+  }
+
+  /* LOGIN */
+  .password-container {
+    max-width: 90%;
+  }
+
+  /* MENU BAR */
+  .menu-bar {
+    height: 32px;
+    padding: 0 10px;
+  }
+
+  .menu-left span:not(.logo-text) {
+    display: none; /* esconde menus em mobile */
+  }
+
+  /* DESKTOP */
+  #desktop {
+    padding-top: 20px;
+  }
+  
+  @supports (padding: env(safe-area-inset-top)) {
+    #desktop {
+      padding-top: calc(20px + env(safe-area-inset-top));
+    }
+  }
+
+  .desktop-content {
+    padding: 0;
+  }
+
+  /* WINDOW = FULLSCREEN */
+  .window {
+    width: 100%;
+    height: calc(100vh - 70px);
+    max-width: none;
+    max-height: none;
+    border-radius: 0;
+  }
+
+  .window-header {
+    height: 44px;
+  }
+
+  .window-title {
+    font-size: 12px;
+  }
+
+  .window-content {
+    padding: 20px;
+  }
+
+  /* PORTFOLIO */
+  .content-section h1 {
+    font-size: 28px;
+  }
+
+  .portfolio-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .item-preview {
+    height: 160px;
+    font-size: 20px;
+  }
+
+  /* DOCK */
+  .dock {
+    bottom: 8px;
+    padding: 6px 10px;
+    gap: 6px;
+  }
+  
+  @supports (padding: env(safe-area-inset-bottom)) {
+    .dock {
+      bottom: calc(8px + env(safe-area-inset-bottom));
+    }
+  }
+
+  .dock-item {
+    width: 44px;
+    height: 44px;
+    font-size: 22px;
+  }
+
+  .dock-item:hover {
+    transform: none; /* hover não existe em mobile */
+  }
+
+  /* MODAIS MOBILE */
+  .modal-content {
+    width: 95%;
+    max-height: 90vh;
+    margin: 20px;
+  }
+
+  .modal-header {
+    padding: 16px 20px;
+  }
+
+  .modal-header h2 {
+    font-size: 20px;
+  }
+
+  .modal-body {
+    padding: 20px;
+    max-height: calc(90vh - 80px);
+  }
+
+  .profile-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+
+  .profile-image .avatar-circle {
+    width: 100px;
+    height: 100px;
+    font-size: 36px;
+  }
+
+  .avatar-circle.large {
+    width: 100px;
+    height: 100px;
+    font-size: 36px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .project-preview {
+    height: 120px;
+  }
+
+  .project-title-overlay {
+    font-size: 14px;
+  }
+
+  .social-links {
+    justify-content: center;
+  }
+  
+  /* APPS MOBILE */
+  .apps-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  
+  .app-item {
+    padding: 20px 12px;
+  }
+  
+  .app-icon {
+    width: 60px;
+    height: 60px;
+    font-size: 28px;
+  }
+}
+
+.arrow-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.25);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 1px solid rgba(102, 126, 234, 0.3);
 }
 
 .arrow-btn:hover {
@@ -1039,304 +1358,5 @@ body {
   border-radius: 20px;
   font-size: 14px;
   font-weight: 600;
-  transition: all 0.2s ease;
-  border: 1px solid rgba(102, 126, 234, 0.3);
-}
-
-.social-link:hover {
-  background: rgba(102, 126, 234, 0.2);
-}
-
-.contact-info p {
-  font-size: 14px;
-  color: #86868b;
-  margin-bottom: 8px;
-}
-
-/* ==================== WEBSITES SECTION ==================== */
-.websites-section h4 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin-bottom: 16px;
-  margin-top: 24px;
-}
-
-.websites-links {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.website-link {
-  display: flex;
-  align-items: center;
-  padding: 16px;
-  background: rgba(102, 126, 234, 0.05);
-  border: 2px solid rgba(102, 126, 234, 0.1);
-  border-radius: 12px;
-  text-decoration: none;
-  color: inherit;
   transition: all 0.3s ease;
-  max-width: 100%;
-  overflow: hidden;
 }
-
-.website-link:hover {
-  background: rgba(102, 126, 234, 0.1);
-  border-color: rgba(102, 126, 234, 0.3);
-  transform: translateY(-2px);
-  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.15);
-}
-
-.website-icon {
-  font-size: 24px;
-  margin-right: 16px;
-  width: 40px;
-  text-align: center;
-  flex-shrink: 0;
-}
-
-.website-info {
-  flex: 1;
-  min-width: 0;
-}
-
-.website-info h5 {
-  font-size: 16px;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin: 0 0 4px 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.website-info p {
-  font-size: 13px;
-  color: #86868b;
-  margin: 0;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-/* ==================== LAYOUT FIXES ==================== */
-body {
-  font-family: "Segoe UI", -apple-system, BlinkMacSystemFont, "Inter", "Helvetica Neue", Arial, sans-serif;
-  overflow: hidden;
-  background: #000;
-  color: #fff;
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-/* Force proper box-sizing for all elements */
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-.window {
-  width: 90%;
-  max-width: 900px;
-  height: 80%;
-  max-height: 700px;
-  background: rgba(255, 255, 255, 0.98);
-  border-radius: 12px;
-  box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
-  overflow: hidden;
-  animation: windowOpen 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-  backdrop-filter: blur(40px);
-  margin: 0 auto;
-}
-
-.window-content {
-  height: calc(100% - 40px);
-  overflow-y: auto;
-  padding: 40px;
-  background: #fff;
-  max-width: 100%;
-  overflow-x: hidden;
-}
-
-/* ==================== MOBILE GLOBAL FIX ==================== */
-@media (max-width: 768px) {
-
-  body {
-    overflow: auto;
-  }
-
-  /* BOOT SCREEN */
-  .boot-content {
-    padding: 30px 20px;
-    width: 90%;
-  }
-
-  .boot-title {
-    font-size: 32px;
-    letter-spacing: 4px;
-  }
-
-  /* LOGIN */
-  .password-container {
-    max-width: 90%;
-  }
-
-  /* MENU BAR */
-  .menu-bar {
-    height: 32px;
-    padding: 0 10px;
-  }
-
-  .menu-left span:not(.logo-text) {
-    display: none; /* esconde menus em mobile */
-  }
-
-  /* DESKTOP */
-  #desktop {
-    padding-top: 20px;
-  }
-  
-  @supports (padding-top: env(safe-area-inset-top)) {
-    #desktop {
-      padding-top: calc(20px + env(safe-area-inset-top));
-    }
-  }
-
-  .desktop-content {
-    padding: 0;
-  }
-
-  /* WINDOW = FULLSCREEN */
-  .window {
-    width: 100%;
-    height: calc(100vh - 70px);
-    max-width: none;
-    max-height: none;
-    border-radius: 0;
-  }
-
-  .window-header {
-    height: 44px;
-  }
-
-  .window-title {
-    font-size: 12px;
-  }
-
-  .window-content {
-    padding: 20px;
-  }
-
-  /* PORTFOLIO */
-  .content-section h1 {
-    font-size: 28px;
-  }
-
-  .portfolio-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .item-preview {
-    height: 160px;
-    font-size: 20px;
-  }
-
-  /* DOCK */
-  .dock {
-    bottom: 8px;
-    padding: 6px 10px;
-    gap: 6px;
-  }
-  
-  @supports (bottom: env(safe-area-inset-bottom)) {
-    .dock {
-      bottom: calc(8px + env(safe-area-inset-bottom));
-    }
-  }
-
-  .dock-item {
-    width: 44px;
-    height: 44px;
-    font-size: 22px;
-  }
-
-  .dock-item:hover {
-    transform: none; /* hover não existe em mobile */
-  }
-
-  /* MODAIS MOBILE */
-  .modal-content {
-    width: 95%;
-    max-height: 90vh;
-    margin: 20px;
-  }
-
-  .modal-header {
-    padding: 16px 20px;
-  }
-
-  .modal-header h2 {
-    font-size: 20px;
-  }
-
-  .modal-body {
-    padding: 20px;
-    max-height: calc(90vh - 80px);
-  }
-
-  .profile-section {
-    flex-direction: column;
-    text-align: center;
-    gap: 20px;
-  }
-
-  .profile-image .avatar-circle {
-    width: 100px;
-    height: 100px;
-    font-size: 36px;
-  }
-
-  .avatar-circle.large {
-    width: 100px;
-    height: 100px;
-    font-size: 36px;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .project-preview {
-    height: 120px;
-  }
-
-  .project-title-overlay {
-    font-size: 14px;
-  }
-
-  .social-links {
-    justify-content: center;
-  }
-  
-  /* APPS MOBILE */
-  .apps-grid {
-    grid-template-columns: 1fr;
-    gap: 16px;
-  }
-  
-  .app-item {
-    padding: 20px 12px;
-  }
-  
-  .app-icon {
-    width: 60px;
-    height: 60px;
-    font-size: 28px;
-  }
-}
-
-
