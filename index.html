@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio | Diana Silva</title>
+  <title>Portfólio | Diana Silva</title>
   
   <!-- FONTE SISTEMA macOS -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -30,7 +30,7 @@
       </div>
 
       <!-- Texto de Loading -->
-      <div class="boot-text">Loading portfolio...</div>
+      <div class="boot-text">Carregando portfólio...</div>
     </div>
   </div>
 
@@ -47,7 +47,7 @@
       
       <!-- Campo Password -->
       <div class="password-container">
-        <input type="password" class="password-input" placeholder="Enter Password" id="passwordInput">
+        <input type="password" class="password-input" placeholder="Introduza Password" id="passwordInput">
         <button class="arrow-btn" onclick="loginUser()">
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
             <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -56,7 +56,7 @@
       </div>
 
       <!-- Hint -->
-      <p class="login-hint">Press Enter or click the arrow</p>
+      <p class="login-hint">Pressione Enter ou clique na seta</p>
     </div>
 
     <!-- Barra de Status -->
@@ -78,7 +78,7 @@
     <div class="menu-bar">
       <div class="menu-left">
         <span class="menu-item logo-text">DS</span>
-        <span class="menu-item active">Portfolio</span>
+        <span class="menu-item active">Portfólio</span>
         <span class="menu-item"></span>
         <span class="menu-item"></span>
         <span class="menu-item"></span>
@@ -98,7 +98,7 @@
             <span class="control minimize"></span>
             <span class="control maximize"></span>
           </div>
-          <div class="window-title">Portfolio — Diana Silva</div>
+          <div class="window-title">Portfólio — Diana Silva</div>
           <div class="window-spacer"></div>
         </div>
         <div class="window-content">
@@ -116,7 +116,7 @@
                 <p data-projetos-description>Fotografias</p>
               </div>
               <div class="portfolio-item" data-section="skills">
-                <div class="item-preview" data-skills-title>SKILLS</div>
+                <div class="item-preview" data-skills-title>APPS</div>
                 <p data-skills-description>Competências</p>
               </div>
               <div class="portfolio-item" data-section="contactos">
@@ -131,8 +131,8 @@
 
     <!-- Dock -->
     <div class="dock">
-      <div class="dock-item active" title="Portfolio">💼</div>
-      <div class="dock-item" title="Contactos">📞</div>
+      <div class="dock-item active" title="Portfólio">💼</div>
+      <div class="dock-item" title="Contacto">📞</div>
       <div class="dock-item" title="Galeria">📸</div>
       <div class="dock-separator"></div>
       <div class="dock-item" id="language-toggle" title="Mudar Idioma">🌐</div>
@@ -145,7 +145,7 @@
   <div id="modal-sobre" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>Sobre Mim</h2>
+        <h2 data-modal-sobre-title>Sobre Mim</h2>
         <span class="modal-close" data-modal="sobre">&times;</span>
       </div>
       <div class="modal-body">
@@ -155,80 +155,92 @@
           </div>
           <div class="profile-info">
             <h3>Diana Silva</h3>
-            <p class="profile-title">Estudante Universitária</p>
-            <p class="profile-description">
-              <strong>Nome:</strong> Diana Silva<br>
-              <strong>Idade:</strong> 18 anos<br>
-              <strong>Localização:</strong> Porto<br>
-              <strong>Idiomas:</strong> Português e Inglês<br>
-              <strong>Gostos:</strong> Editar, Viajar, Ouvir música, Tirar fotos
+            <p class="profile-title" data-profile-title>Estudante Universitária</p>
+            <p class="profile-description" data-profile-description>
+              <strong data-name-label>Nome:</strong> <span data-name-value>Diana Silva</span><br>
+              <strong data-age-label>Idade:</strong> <span data-age-value>18 anos</span><br>
+              <strong data-location-label>Localização:</strong> <span data-location-value>Porto</span><br>
+              <strong data-languages-label>Línguas:</strong> <span data-languages-value>Português e Inglês</span><br>
+              <strong data-interests-label>Interesses:</strong> <span data-interests-text>Edição, Viajar, Ouvir música, Tirar fotos</span>
             </p>
           </div>
         </div>
         <div class="experience-section">
-          <h4>Frequenta</h4>
+          <h4 data-education-title>Actualmente a Frequentar</h4>
           <div class="experience-item">
-            <strong>Universidade Lusófona</strong>
-            <span>2025 - Presente</span>
-            <p>Curso de Comunicação Audiovisual e Multimédia</p>
+            <strong data-university-name>Universidade Lusófona</strong>
+            <span data-university-period>2025 - Presente</span>
+            <p data-university-course>Curso de Comunicação Audiovisual e Multimédia</p>
           </div>
           <div class="experience-item">
-            <strong>Bristol School</strong>
-            <span>2019 - Presente</span>
-            <p>C1 English Level</p>
+            <strong data-bristol-name>Escola Bristol</strong>
+            <span data-bristol-period>2019 - Presente</span>
+            <p data-bristol-level>Nível C1 de Inglês</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Modal PROJETOS -->
+  <!-- Modal GALERIA -->
   <div id="modal-projetos" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>Fotografias</h2>
+        <h2 data-modal-projetos-title>Fotografias</h2>
         <span class="modal-close" data-modal="projetos">&times;</span>
       </div>
       <div class="modal-body">
         <div class="projects-grid">
           <div class="project-item">
-            <div class="project-preview">PAISAGEM</div>
-            <h4>Paisagens</h4>
-            <p>Fotografias de paisagens naturais e cenários urbanos.</p>
+            <div class="project-preview" data-paisagem-title>
+              <img src="img/paisagem.JPG" alt="Paisagem" data-alt-paisagem="Paisagem" class="project-image">
+              <div class="project-title-overlay">PAISAGEM</div>
+            </div>
+            <h4 data-paisagem-subtitle>Paisagens</h4>
+            <p data-paisagem-description>Fotografias de paisagens naturais e cenário urbano.</p>
             <div class="project-tech">
-              <span>Paisagem</span>
-              <span>Natureza</span>
-              <span>Urbano</span>
+              <span data-paisagem-tag>Paisagem</span>
+              <span data-paisagem-natureza>Natureza</span>
+              <span data-paisagem-urbano>Urbano</span>
             </div>
           </div>
           <div class="project-item">
-            <div class="project-preview">ABSTRAÇÃO</div>
-            <h4>Abstração</h4>
-            <p>Fotografias abstratas e composições artísticas.</p>
+            <div class="project-preview" data-abstracao-title>
+              <img src="img/lights.JPG" alt="Abstração" data-alt-abstracao="Abstração" class="project-image">
+              <div class="project-title-overlay">ABSTRAÇÃO</div>
+            </div>
+            <h4 data-abstracao-subtitle>Abstração</h4>
+            <p data-abstracao-description>Fotografias abstratas e composições artísticas.</p>
             <div class="project-tech">
-              <span>Abstrato</span>
-              <span>Artístico</span>
-              <span>Composições</span>
+              <span data-abstracao-tag>Abstrato</span>
+              <span data-abstracao-artistico>Artístico</span>
+              <span data-abstracao-composicoes>Composições</span>
             </div>
           </div>
           <div class="project-item">
-            <div class="project-preview">NATUREZA MORTA</div>
-            <h4>Natureza Morta</h4>
-            <p>Fotografias de objetos e naturezas mortas.</p>
+            <div class="project-preview" data-natureza-morta-title>
+              <img src="img/bilhar.jpeg" alt="Natureza Morta" data-alt-natureza-morta="Natureza Morta" class="project-image">
+              <div class="project-title-overlay">NATUREZA MORTA</div>
+            </div>
+            <h4 data-natureza-morta-subtitle>Natureza Morta</h4>
+            <p data-natureza-morta-description>Fotografias de objetos e natureza morta.</p>
             <div class="project-tech">
-              <span>Objetos</span>
-              <span>Still Life</span>
-              <span>Composição</span>
+              <span data-natureza-morta-objetos>Objetos</span>
+              <span data-natureza-morta-tag>Natureza Morta</span>
+              <span data-natureza-morta-composicao>Composição</span>
             </div>
           </div>
           <div class="project-item">
-            <div class="project-preview">EXPOSIÇÃO</div>
-            <h4>Fotos de Exposição</h4>
-            <p>Registos de exposições e eventos artísticos.</p>
+            <div class="project-preview" data-exposicao-title>
+              <img src="img/exp.JPG" alt="Exposição" data-alt-exposicao="Exposição" class="project-image">
+              <div class="project-title-overlay">EXPOSIÇÃO</div>
+            </div>
+            <h4 data-exposicao-subtitle>Fotos de Exposições</h4>
+            <p data-exposicao-description>Registo de exposições e eventos artísticos.</p>
             <div class="project-tech">
-              <span>Exposições</span>
-              <span>Eventos</span>
-              <span>Documentação</span>
+              <span data-exposicao-exposicoes>Exposições</span>
+              <span data-exposicao-eventos>Eventos</span>
+              <span data-exposicao-documentacao>Documentação</span>
             </div>
           </div>
         </div>
@@ -240,58 +252,58 @@
   <div id="modal-skills" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>Apps</h2>
+        <h2 data-modal-skills-title>Aplicações</h2>
         <span class="modal-close" data-modal="skills">&times;</span>
       </div>
       <div class="modal-body">
         <div class="skills-section">
-          <h4>Software de Design e Edição</h4>
+          <h4 data-apps-section-title>Software de Design e Edição</h4>
           <div class="apps-grid">
             <div class="app-item">
               <div class="app-icon">🎨</div>
               <h4>Photoshop</h4>
-              <p>Edição de imagens e design gráfico</p>
+              <p data-apps-description>Edição de imagens e design gráfico</p>
             </div>
             <div class="app-item">
               <div class="app-icon">✂️</div>
               <h4>Affinity</h4>
-              <p>Design engloba várias apps numa</p>
+              <p data-affinity-description>Suite de design com múltiplas apps</p>
             </div>
             <div class="app-item">
               <div class="app-icon">🎬</div>
               <h4>DaVinci Resolve</h4>
-              <p>Edição de vídeo e pós-produção</p>
+              <p data-davinci-description>Edição de vídeo e pós-produção</p>
             </div>
             <div class="app-item">
               <div class="app-icon">📐</div>
               <h4>Illustrator</h4>
-              <p>Design vetorial e ilustrações</p>
+              <p data-illustrator-description>Design vectorial e ilustrações</p>
             </div>
           </div>
         </div>
         
         <div class="skills-section">
-          <h4>Níveis de Proficiência</h4>
+          <h4 data-proficiency-title>Níveis de Proficiência</h4>
           <div class="skill-item">
-            <span>Photoshop</span>
+            <span data-photoshop-span>Photoshop</span>
             <div class="skill-bar">
               <div class="skill-progress" data-progress="85"></div>
             </div>
           </div>
           <div class="skill-item">
-            <span>Affinity</span>
+            <span data-affinity-span>Affinity</span>
             <div class="skill-bar">
               <div class="skill-progress" data-progress="80"></div>
             </div>
           </div>
           <div class="skill-item">
-            <span>DaVinci Resolve</span>
+            <span data-davinci-span>DaVinci Resolve</span>
             <div class="skill-bar">
               <div class="skill-progress" data-progress="75"></div>
             </div>
           </div>
           <div class="skill-item">
-            <span>Illustrator</span>
+            <span data-illustrator-span>Illustrator</span>
             <div class="skill-bar">
               <div class="skill-progress" data-progress="70"></div>
             </div>
@@ -305,30 +317,30 @@
   <div id="modal-contactos" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2>Contactos</h2>
+        <h2 data-modal-contactos-title>Contactos</h2>
         <span class="modal-close" data-modal="contactos">&times;</span>
       </div>
       <div class="modal-body">
         <div class="contact-section">
-          <h4>Mensagens</h4>
-          <p>para a realização de trabalhos/eventos/projetos...</p>
+          <h4 data-messages-title>Mensagens</h4>
+          <p data-messages-description>para a realização de trabalhos/eventos/projetos...</p>
           
           <form class="contact-form">
             <div class="form-group">
-              <input type="text" placeholder="Nome" required>
+              <input type="text" placeholder="Nome" data-name-placeholder required>
             </div>
             <div class="form-group">
-              <input type="email" placeholder="Email" required>
+              <input type="email" placeholder="Email" data-email-placeholder required>
             </div>
             <div class="form-group">
-              <textarea placeholder="Mensagem" rows="4" required></textarea>
+              <textarea placeholder="Mensagem" data-message-placeholder rows="4" required></textarea>
             </div>
-            <button type="submit" class="submit-btn">Enviar Mensagem</button>
+            <button type="submit" class="submit-btn" data-send-button>Enviar Mensagem</button>
           </form>
         </div>
 
         <div class="social-section">
-          <h4>Redes Sociais</h4>
+          <h4 data-social-title>Redes Sociais</h4>
           <div class="social-links">
             <a href="https://github.com/dianasilv7" class="social-link">GitHub</a>
             <a href="https://www.instagram.com/shotsbydiana_/" class="social-link">Instagram</a>
@@ -338,7 +350,7 @@
         </div>
 
         <div class="direct-contact">
-          <h4>Contacto Direto</h4>
+          <h4 data-direct-contact-title>Contacto Direto</h4>
           <div class="contact-info">
             <p>📧 dianasilva.pt.12@gmail.com</p>
             <p>📱 +351 932 448 201</p>
@@ -347,27 +359,27 @@
         </div>
 
         <div class="websites-section">
-          <h4>Links(Websites)</h4>
+          <h4 data-websites-title>Outros Websites</h4>
           <div class="websites-links">
             <a href="https://dianasilv7.github.io/exercicioaula3/" class="website-link" target="_blank">
               <span class="website-icon">🖼️</span>
               <div class="website-info">
-                <h5>Galeria</h5>
-                <p>Portfólio Fotográfico</p>
+                <h5 data-galeria-site-title>Galeria</h5>
+                <p data-galeria-site-description>Portfólio de Fotografia</p>
               </div>
             </a>
             <a href="https://dianasilv7.github.io/thenotebook/" class="website-link" target="_blank">
               <span class="website-icon">🎬</span>
               <div class="website-info">
-                <h5>The Notebook</h5>
-                <p>Site promocional de um filme</p>
+                <h5 data-notebook-site-title>The Notebook</h5>
+                <p data-notebook-site-description>Website promocional para um filme</p>
               </div>
             </a>
             <a href="https://dianasilv7.github.io/exerc-cio-aula-cam/" class="website-link" target="_blank">
               <span class="website-icon">🌐</span>
               <div class="website-info">
-                <h5>Primeiro Site</h5>
-                <p>Primeiro projeto de programação</p>
+                <h5 data-first-site-title>Primeiro Site</h5>
+                <p data-first-site-description>Primeiro projeto de programação</p>
               </div>
             </a>
           </div>

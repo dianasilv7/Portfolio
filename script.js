@@ -116,49 +116,49 @@ document.addEventListener('DOMContentLoaded', function() {
   }
   
   // Botão Maximize (mobile-friendly)
-const maximizeBtn = document.querySelector('.control.maximize');
-if (maximizeBtn) {
-  let isMaximized = false;
+  const maximizeBtn = document.querySelector('.control.maximize');
+  if (maximizeBtn) {
+    let isMaximized = false;
 
-  maximizeBtn.addEventListener('click', function () {
-    const windowEl = document.getElementById('portfolio-window');
+    maximizeBtn.addEventListener('click', function () {
+      const windowEl = document.getElementById('portfolio-window');
 
-    if (!isMaximized) {
-      windowEl.style.width = '100vw';
-      windowEl.style.height = '100vh';
-      windowEl.style.maxWidth = '100vw';
-      windowEl.style.maxHeight = '100vh';
-      windowEl.style.borderRadius = '0';
-      isMaximized = true;
-    } else {
-      windowEl.style.width = '';
-      windowEl.style.height = '';
-      windowEl.style.maxWidth = '';
-      windowEl.style.maxHeight = '';
-      windowEl.style.borderRadius = '';
-      isMaximized = false;
-    }
-  });
-}
-
-// Adicionar animações de fechamento ao CSS dinamicamente
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes windowClose {
-    to {
-      opacity: 0;
-      transform: scale(0.8);
-    }
+      if (!isMaximized) {
+        windowEl.style.width = '100vw';
+        windowEl.style.height = '100vh';
+        windowEl.style.maxWidth = '100vw';
+        windowEl.style.maxHeight = '100vh';
+        windowEl.style.borderRadius = '0';
+        isMaximized = true;
+      } else {
+        windowEl.style.width = '';
+        windowEl.style.height = '';
+        windowEl.style.maxWidth = '';
+        windowEl.style.maxHeight = '';
+        windowEl.style.borderRadius = '';
+        isMaximized = false;
+      }
+    });
   }
-  
-  @keyframes windowMinimize {
-    to {
-      opacity: 0;
-      transform: scale(0.1) translateY(500px);
+
+  // Adicionar animações de fechamento ao CSS dinamicamente
+  const style = document.createElement('style');
+  style.textContent = `
+    @keyframes windowClose {
+      to {
+        opacity: 0;
+        transform: scale(0.8);
+      }
     }
-  }
-`;
-document.head.appendChild(style);
+    
+    @keyframes windowMinimize {
+      to {
+        opacity: 0;
+        transform: scale(0.1) translateY(500px);
+      }
+    }
+  `;
+  document.head.appendChild(style);
 });
 
 // ==================== DOCK INTERACTIONS ====================
@@ -175,8 +175,8 @@ document.addEventListener('DOMContentLoaded', function() {
       
       const title = this.getAttribute('title');
       
-      // Contactos - abre modal contactos
-      if (title === 'Contactos') {
+      // Contacto - abre modal de contactos
+      if (title === 'Contacto') {
         openModal('contactos');
         return;
       }
@@ -187,8 +187,8 @@ document.addEventListener('DOMContentLoaded', function() {
         return;
       }
       
-      // Portfolio - mostra a janela principal
-      if (title === 'Portfolio') {
+      // Portfólio - mostra janela principal
+      if (title === 'Portfólio') {
         const window = document.getElementById('portfolio-window');
         window.style.display = 'block';
         window.style.animation = 'windowOpen 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
@@ -211,14 +211,14 @@ document.addEventListener('DOMContentLoaded', function() {
   
   if (languageToggle) {
     languageToggle.addEventListener('click', function() {
-      // Toggle between PT and ENG
+      // Alternar entre PT e ENG
       if (currentLanguage === 'pt') {
         currentLanguage = 'eng';
         this.setAttribute('title', 'Switch Language');
         changeLanguage('eng');
       } else {
         currentLanguage = 'pt';
-        this.setAttribute('title', 'Mudar Idioma');
+        this.setAttribute('title', 'Change Language');
         changeLanguage('pt');
       }
     });
@@ -228,39 +228,251 @@ document.addEventListener('DOMContentLoaded', function() {
 function changeLanguage(lang) {
   const texts = {
     pt: {
+      // Títulos principais
       'portfolio-title': 'Portfólio',
       'sobre-title': 'Sobre Mim',
       'contactos-title': 'Contactos',
-      'projetos-title': 'Projetos',
-      'skills-title': 'Competências',
+      'projetos-title': 'Galeria',
+      'skills-title': 'Aplicações',
+      
+      // Descrições
       'portfolio-description': 'Website',
       'sobre-description': 'Mais sobre mim',
       'contactos-description': 'Entrar em contacto',
-      'projetos-description': 'Trabalhos realizados',
-      'skills-description': 'Competências'
+      'projetos-description': 'Fotografias',
+      'skills-description': 'Competências',
+      
+      // Títulos dos modais
+      'modal-sobre-title': 'Sobre Mim',
+      'modal-projetos-title': 'Fotografias',
+      'modal-skills-title': 'Aplicações',
+      'modal-contactos-title': 'Contactos',
+      
+      // Galeria - MANTER SEMPRE EM PORTUGUÊS
+      'paisagem-title': 'PAISAGEM',
+      'paisagem-subtitle': 'Paisagens',
+      'paisagem-description': 'Fotografias de paisagens naturais e cenário urbano.',
+      'abstracao-title': 'ABSTRAÇÃO',
+      'abstracao-subtitle': 'Abstração',
+      'abstracao-description': 'Fotografias abstractas e composições artísticas.',
+      'natureza-morta-title': 'NATUREZA MORTA',
+      'natureza-morta-subtitle': 'Natureza Morta',
+      'natureza-morta-description': 'Fotografias de objectos e natureza morta.',
+      'exposicao-title': 'EXPOSIÇÃO',
+      'exposicao-subtitle': 'Fotos de Exposições',
+      'exposicao-description': 'Registo de exposições e eventos artísticos.',
+      
+      // Tags da Galeria - MANTER SEMPRE EM PORTUGUÊS
+      'paisagem-tag': 'Paisagem',
+      'paisagem-natureza': 'Natureza',
+      'paisagem-urbano': 'Urbano',
+      'abstracao-tag': 'Abstrato',
+      'abstracao-artistico': 'Artístico',
+      'abstracao-composicoes': 'Composições',
+      'natureza-morta-objetos': 'Objetos',
+      'natureza-morta-tag': 'Natureza Morta',
+      'natureza-morta-composicao': 'Composição',
+      'exposicao-exposicoes': 'Exposições',
+      'exposicao-eventos': 'Eventos',
+      'exposicao-documentacao': 'Documentação',
+      
+      // Aplicações
+      'apps-section-title': 'Software de Design e Edição',
+      'apps-description': 'Edição de imagens e design gráfico',
+      'affinity-description': 'Suite de design com múltiplas apps',
+      'davinci-description': 'Edição de vídeo e pós-produção',
+      'illustrator-description': 'Design vectorial e ilustrações',
+      'proficiency-title': 'Níveis de Proficiência',
+      
+      // Contactos
+      'messages-title': 'Mensagens',
+      'messages-description': 'para a realização de trabalhos/eventos/projetos...',
+      'name-placeholder': 'Nome',
+      'email-placeholder': 'Email',
+      'message-placeholder': 'Mensagem',
+      'send-button': 'Enviar Mensagem',
+      'social-title': 'Redes Sociais',
+      'direct-contact-title': 'Contacto Direto',
+      
+      // Websites
+      'websites-title': 'Websites',
+      'galeria-site-title': 'Galeria',
+      'galeria-site-description': 'Portfólio de Fotografia',
+      'notebook-site-title': 'The Notebook',
+      'notebook-site-description': 'Website promocional para um filme',
+      'first-site-title': 'Primeiro Site',
+      'first-site-description': 'Primeiro projeto de programação',
+      
+      // Sobre Mim
+      'profile-title': 'Estudante Universitária',
+      'name-label': 'Nome:',
+      'name-value': 'Diana Silva',
+      'age-label': 'Idade:',
+      'age-value': '18 anos',
+      'location-label': 'Localização:',
+      'location-value': 'Porto',
+      'languages-label': 'Línguas:',
+      'languages-value': 'Português e Inglês',
+      'interests-label': 'Interesses:',
+      'interests-text': 'Edição, Viajar, Ouvir música, Tirar fotos',
+      'education-title': 'Actualmente a Frequentar',
+      'university-name': 'Universidade Lusófona',
+      'university-period': '2025 - Presente',
+      'university-course': 'Curso de Comunicação Audiovisual e Multimédia',
+      'bristol-name': 'Escola Bristol',
+      'bristol-period': '2019 - Presente',
+      'bristol-level': 'Nível C1 de Inglês',
+      
+      // Níveis de Proficiência
+      'proficiency-title': 'Níveis de Proficiência',
+      'photoshop-span': 'Photoshop',
+      'affinity-span': 'Affinity',
+      'davinci-span': 'DaVinci Resolve',
+      'illustrator-span': 'Illustrator',
+      
+      // Websites
+      'websites-title': 'Outros Websites',
+      
+      // Atributos alt das imagens - MANTER SEMPRE EM PORTUGUÊS
+      'alt-paisagem': 'Paisagem',
+      'alt-abstracao': 'Abstração',
+      'alt-natureza-morta': 'Natureza Morta',
+      'alt-exposicao': 'Exposição',
+      
+      // Alertas
+      'form-alert': 'Por favor, preencha todos os campos.',
+      'sending-text': 'Enviando...',
+      'success-message': 'Mensagem enviada com sucesso! Obrigada pelo contacto.',
+      'feature-not-available': 'Esta funcionalidade ainda não está disponível'
     },
     eng: {
+      // Títulos principais
       'portfolio-title': 'Portfolio',
       'sobre-title': 'About Me',
       'contactos-title': 'Contact',
-      'projetos-title': 'Projects',
-      'skills-title': 'Skills',
+      'projetos-title': 'Gallery',
+      'skills-title': 'Apps',
+      
+      // Descrições
       'portfolio-description': 'Website',
       'sobre-description': 'More about me',
       'contactos-description': 'Get in touch',
-      'projetos-description': 'Work done',
-      'skills-description': 'Competencies'
+      'projetos-description': 'Photography',
+      'skills-description': 'Competencies',
+      
+      // Títulos dos modais
+      'modal-sobre-title': 'About Me',
+      'modal-projetos-title': 'Photography',
+      'modal-skills-title': 'Apps',
+      'modal-contactos-title': 'Contact',
+      
+      // Galeria - English translations when language toggle is active
+      'paisagem-title': 'LANDSCAPE',
+      'paisagem-subtitle': 'Landscapes',
+      'paisagem-description': 'Natural landscapes and urban scenery photography.',
+      'abstracao-title': 'ABSTRACTION',
+      'abstracao-subtitle': 'Abstraction',
+      'abstracao-description': 'Abstract photography and artistic compositions.',
+      'natureza-morta-title': 'STILL LIFE',
+      'natureza-morta-subtitle': 'Still Life',
+      'natureza-morta-description': 'Photography of objects and still life.',
+      'exposicao-title': 'EXHIBITION',
+      'exposicao-subtitle': 'Exhibition Photos',
+      'exposicao-description': 'Recording of exhibitions and artistic events.',
+      
+      // Gallery Tags - English translations when language toggle is active
+      'paisagem-tag': 'Landscape',
+      'paisagem-natureza': 'Nature',
+      'paisagem-urbano': 'Urban',
+      'abstracao-tag': 'Abstract',
+      'abstracao-artistico': 'Artistic',
+      'abstracao-composicoes': 'Compositions',
+      'natureza-morta-objetos': 'Objects',
+      'natureza-morta-tag': 'Still Life',
+      'natureza-morta-composition': 'Composition',
+      'exposicao-exposicoes': 'Exhibitions',
+      'exposicao-eventos': 'Events',
+      'exposicao-documentacao': 'Documentation',
+      
+      // Aplicações
+      'apps-section-title': 'Design and Editing Software',
+      'apps-description': 'Image editing and graphic design',
+      'affinity-description': 'Design suite with multiple apps',
+      'davinci-description': 'Video editing and post-production',
+      'illustrator-description': 'Vector design and illustrations',
+      'proficiency-title': 'Proficiency Levels',
+      
+      // Contactos
+      'messages-title': 'Messages',
+      'messages-description': 'for the realization of work/events/projects...',
+      'name-placeholder': 'Name',
+      'email-placeholder': 'Email',
+      'message-placeholder': 'Message',
+      'send-button': 'Send Message',
+      'social-title': 'Social Networks',
+      'direct-contact-title': 'Direct Contact',
+      
+      // Websites
+      'websites-title': 'Websites',
+      'galeria-site-title': 'Gallery',
+      'galeria-site-description': 'Photography Portfolio',
+      'notebook-site-title': 'The Notebook',
+      'notebook-site-description': 'Promotional website for a movie',
+      'first-site-title': 'First Site',
+      'first-site-description': 'First programming project',
+      
+      // Sobre Mim
+      'profile-title': 'University Student',
+      'name-label': 'Name:',
+      'name-value': 'Diana Silva',
+      'age-label': 'Age:',
+      'age-value': '18 years',
+      'location-label': 'Lives:',
+      'location-value': 'Porto',
+      'languages-label': 'Speaks:',
+      'languages-value': 'Portuguese and English',
+      'interests-label': 'Hobbies:',
+      'interests-text': 'Editing, Traveling, Music, Photography',
+      'education-title': 'Currently Attending',
+      'university-name': 'Universidade Lusófona',
+      'university-period': '2025 - Present',
+      'university-course': 'Audiovisual and Multimedia Communication Course',
+      'bristol-name': 'Bristol School',
+      'bristol-period': '2019 - Present',
+      'bristol-level': 'C1 Level in English',
+      
+      // Níveis de Proficiência
+      'proficiency-title': 'Proficiency Levels',
+      'photoshop-span': 'Photoshop',
+      'affinity-span': 'Affinity',
+      'davinci-span': 'DaVinci Resolve',
+      'illustrator-span': 'Illustrator',
+      
+      // Websites
+      'websites-title': 'Other Websites',
+      
+      // Image alt attributes - English translations when language toggle is active
+      'alt-paisagem': 'Landscape',
+      'alt-abstracao': 'Abstraction',
+      'alt-natureza-morta': 'Still Life',
+      'alt-exposicao': 'Exhibition',
+      
+      // Alertas
+      'form-alert': 'Please fill in all fields.',
+      'sending-text': 'Sending...',
+      'success-message': 'Message sent successfully! Thank you for contacting.',
+      'feature-not-available': 'This feature is not yet available'
     }
   };
   
-  // Change page title
+  // Alterar título da página
   if (lang === 'eng') {
     document.title = 'Portfolio | Diana Silva';
   } else {
     document.title = 'Portfólio | Diana Silva';
   }
   
-  // Update modal titles and content
+  // Atualizar títulos e conteúdo dos modais
   const currentTexts = texts[lang];
   Object.keys(currentTexts).forEach(key => {
     const element = document.querySelector(`[data-${key}]`);
@@ -268,6 +480,39 @@ function changeLanguage(lang) {
       element.textContent = currentTexts[key];
     }
   });
+  
+  // Atualizar atributos alt das imagens
+  Object.keys(currentTexts).forEach(key => {
+    if (key.startsWith('alt-')) {
+      const element = document.querySelector(`[data-alt-${key.replace('alt-', '')}]`);
+      if (element) {
+        element.setAttribute('alt', currentTexts[key]);
+      }
+    }
+  });
+  
+  // Atualizar títulos dos modais diretamente
+  if (lang === 'eng') {
+    const sobreModal = document.querySelector('#modal-sobre h2');
+    const projetosModal = document.querySelector('#modal-projetos h2');
+    const skillsModal = document.querySelector('#modal-skills h2');
+    const contactosModal = document.querySelector('#modal-contactos h2');
+    
+    if (sobreModal) sobreModal.textContent = 'About Me';
+    if (projetosModal) projetosModal.textContent = 'Photography';
+    if (skillsModal) skillsModal.textContent = 'Apps';
+    if (contactosModal) contactosModal.textContent = 'Contact';
+  } else {
+    const sobreModal = document.querySelector('#modal-sobre h2');
+    const projetosModal = document.querySelector('#modal-projetos h2');
+    const skillsModal = document.querySelector('#modal-skills h2');
+    const contactosModal = document.querySelector('#modal-contactos h2');
+    
+    if (sobreModal) sobreModal.textContent = 'Sobre Mim';
+    if (projetosModal) projetosModal.textContent = 'Fotografias';
+    if (skillsModal) skillsModal.textContent = 'Aplicações';
+    if (contactosModal) contactosModal.textContent = 'Contactos';
+  }
 }
 
 // ==================== MENU BAR INTERACTIONS ====================
@@ -293,7 +538,7 @@ if (window.innerWidth < 768) {
   }, 1500);
 }
 
-// Animação de abertura da janela// ==================== DRAG WINDOW ====================
+// ==================== DRAG WINDOW ====================
 let highestZIndex = 1000; // Começa no z-index base do desktop
 
 function makeWindowDraggable(windowEl) {
@@ -417,8 +662,13 @@ document.addEventListener('DOMContentLoaded', function() {
       const message = this.querySelector('textarea').value;
       
       // Simple validation
+      const currentLang = document.querySelector('#language-toggle') ? 
+        (document.querySelector('#language-toggle').getAttribute('title') === 'Switch Language' ? 'eng' : 'pt') : 'pt';
+      
       if (!name || !email || !message) {
-        alert('Por favor, preencha todos os campos.');
+        const alertText = currentLang === 'eng' ? 
+          'Please fill in all fields.' : 'Por favor, preencha todos os campos.';
+        alert(alertText);
         return;
       }
       
@@ -426,11 +676,16 @@ document.addEventListener('DOMContentLoaded', function() {
       const submitBtn = this.querySelector('.submit-btn');
       const originalText = submitBtn.textContent;
       
-      submitBtn.textContent = 'Enviando...';
+      const sendingText = currentLang === 'eng' ? 
+        'Sending...' : 'Enviando...';
+      submitBtn.textContent = sendingText;
       submitBtn.disabled = true;
       
       setTimeout(() => {
-        alert('Mensagem enviada com sucesso! Obrigada pelo contacto.');
+        const successText = currentLang === 'eng' ? 
+          'Message sent successfully! Thank you for contacting.' : 
+          'Mensagem enviada com sucesso! Obrigada pelo contacto.';
+        alert(successText);
         this.reset();
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
@@ -531,19 +786,18 @@ document.addEventListener('DOMContentLoaded', function() {
   // Selecionar todos os links sociais
   const socialLinks = document.querySelectorAll('.social-link');
   
-    socialLinks.forEach(link => {
-      link.addEventListener('click', function(e) {
-        const linkText = this.textContent.trim();
-        
-        // Apenas LinkedIn mostra alerta
-        if (linkText === 'LinkedIn') {
-          e.preventDefault();
-          alert('Esta funcionalidade ainda não está disponível');
-        }
-        // GitHub, Instagram e TikTok funcionam normalmente
-        // (não fazer nada, deixa seguir o href)
-      });
+  socialLinks.forEach(link => {
+    link.addEventListener('click', function(e) {
+      const linkText = this.textContent.trim();
+      
+      // LinkedIn e TikTok mostram alerta
+      if (linkText === 'LinkedIn' || linkText === 'Tiktok') {
+        e.preventDefault();
+        alert('Esta funcionalidade ainda não está disponível');
+      }
+      // GitHub e Instagram funcionam normalmente
+      // (não fazer nada, deixa seguir o href)
     });
+  });
 });
-
 
