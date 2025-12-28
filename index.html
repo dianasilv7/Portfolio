@@ -1,35 +1,383 @@
 <!DOCTYPE html>
-<html lang="pt">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfólio | Diana Silva</title>
-
-  <!-- FONTE ULTRA-CONDENSADA GROTESC DISPLAY -->
-  <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+  <title>Portfolio | Diana Silva</title>
+  
+  <!-- FONTE SISTEMA macOS -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- CSS externo -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- INTRO FULLSCREEN -->
-  <div id="intro">
-      <video id="introVideo" autoplay muted loop playsinline>
-          <source src="vd/Cyberpunk.mp4" type="video/mp4">
-      </video>
+  <!-- Intro -->
+  <div id="boot-screen">
+    <video id="bootVideo" autoplay muted loop playsinline>
+      <source src="vd/Cyberpunk.mp4" type="video/mp4">
+    </video>
+    <div class="boot-content">
+      <!-- Texto Principal -->
+      <div class="boot-title">DIANA SILVA</div>
 
-      <div class="intro-text"></div>
-      <button class="enter-btn" onclick="enterSite()">ENTRAR</button>
+      <!-- Barra de Progresso -->
+      <div class="progress-container">
+        <div class="progress-bar">
+          <div class="progress-fill"></div>
+        </div>
+      </div>
+
+      <!-- Texto de Loading -->
+      <div class="boot-text">Loading portfolio...</div>
+    </div>
   </div>
 
-  <!-- CONTEÚDO DO SITE -->
-  <div id="main">
-      <h1>Portfólio</h1>
-      <p>Diana Silva</p>
+  <!-- LOGIN SCREEN -->
+  <div id="login-screen">
+    <div class="login-content">
+      <!-- Avatar -->
+      <div class="user-avatar">
+        <div class="avatar-circle">DS</div>
+      </div>
+      
+      <!-- Nome -->
+      <h2 class="user-name">Diana Silva</h2>
+      
+      <!-- Campo Password -->
+      <div class="password-container">
+        <input type="password" class="password-input" placeholder="Enter Password" id="passwordInput">
+        <button class="arrow-btn" onclick="loginUser()">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M7.5 15L12.5 10L7.5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Hint -->
+      <p class="login-hint">Press Enter or click the arrow</p>
+    </div>
+
+    <!-- Barra de Status -->
+    <div class="status-bar">
+      <div class="status-left">
+        <span class="powerbutton-icon">⏼</span>
+        <span class="battery-icon">🔋</span>
+      </div>
+      <div class="status-right">
+        <span id="current-time"></span>
+      </div>
+    </div>
+  </div>
+  
+
+  <!-- DESKTOP -->
+  <div id="desktop">
+    <!-- Menu Bar -->
+    <div class="menu-bar">
+      <div class="menu-left">
+        <span class="menu-item logo-text">DS</span>
+        <span class="menu-item active">Portfolio</span>
+        <span class="menu-item"></span>
+        <span class="menu-item"></span>
+        <span class="menu-item"></span>
+      </div>
+      <div class="menu-right">
+        <span id="menu-time"></span>
+      </div>
+    </div>
+
+    <!-- Desktop Content -->
+    <div class="desktop-content">
+      <!-- Janelas -->
+      <div class="window" id="portfolio-window">
+        <div class="window-header">
+          <div class="window-controls">
+            <span class="control close"></span>
+            <span class="control minimize"></span>
+            <span class="control maximize"></span>
+          </div>
+          <div class="window-title">Portfolio — Diana Silva</div>
+          <div class="window-spacer"></div>
+        </div>
+        <div class="window-content">
+          <div class="content-section">
+            <h1 data-portfolio-title>Portfólio</h1>
+            <p data-portfolio-description>Website</p>
+            
+            <div class="portfolio-grid">
+              <div class="portfolio-item" data-section="sobre">
+                <div class="item-preview" data-sobre-title>SOBRE</div>
+                <p data-sobre-description>Mais sobre mim</p>
+              </div>
+              <div class="portfolio-item" data-section="projetos">
+                <div class="item-preview" data-projetos-title>GALERIA</div>
+                <p data-projetos-description>Fotografias</p>
+              </div>
+              <div class="portfolio-item" data-section="skills">
+                <div class="item-preview" data-skills-title>SKILLS</div>
+                <p data-skills-description>Competências</p>
+              </div>
+              <div class="portfolio-item" data-section="contactos">
+                <div class="item-preview" data-contactos-title>CONTACTOS</div>
+                <p data-contactos-description>Entrar em contacto</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Dock -->
+    <div class="dock">
+      <div class="dock-item active" title="Portfolio">💼</div>
+      <div class="dock-item" title="Contactos">📞</div>
+      <div class="dock-item" title="Galeria">📸</div>
+      <div class="dock-separator"></div>
+      <div class="dock-item" id="language-toggle" title="Mudar Idioma">🌐</div>
+      <div class="dock-item" title="Sobre Mim">👤</div>
+    </div>
+  </div>
+
+  <!-- MODAIS -->
+  <!-- Modal SOBRE -->
+  <div id="modal-sobre" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Sobre Mim</h2>
+        <span class="modal-close" data-modal="sobre">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="profile-section">
+          <div class="profile-image">
+            <div class="avatar-circle large">DS</div>
+          </div>
+          <div class="profile-info">
+            <h3>Diana Silva</h3>
+            <p class="profile-title">Estudante Universitária</p>
+            <p class="profile-description">
+              <strong>Nome:</strong> Diana Silva<br>
+              <strong>Idade:</strong> 18 anos<br>
+              <strong>Localização:</strong> Porto<br>
+              <strong>Idiomas:</strong> Português e Inglês<br>
+              <strong>Gostos:</strong> Editar, Viajar, Ouvir música, Tirar fotos
+            </p>
+          </div>
+        </div>
+        <div class="experience-section">
+          <h4>Frequenta</h4>
+          <div class="experience-item">
+            <strong>Universidade Lusófona</strong>
+            <span>2025 - Presente</span>
+            <p>Curso de Comunicação Audiovisual e Multimédia</p>
+          </div>
+          <div class="experience-item">
+            <strong>Bristol School</strong>
+            <span>2019 - Presente</span>
+            <p>C1 English Level</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal PROJETOS -->
+  <div id="modal-projetos" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Fotografias</h2>
+        <span class="modal-close" data-modal="projetos">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="projects-grid">
+          <div class="project-item">
+            <div class="project-preview">PAISAGEM</div>
+            <h4>Paisagens</h4>
+            <p>Fotografias de paisagens naturais e cenários urbanos.</p>
+            <div class="project-tech">
+              <span>Paisagem</span>
+              <span>Natureza</span>
+              <span>Urbano</span>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="project-preview">ABSTRAÇÃO</div>
+            <h4>Abstração</h4>
+            <p>Fotografias abstratas e composições artísticas.</p>
+            <div class="project-tech">
+              <span>Abstrato</span>
+              <span>Artístico</span>
+              <span>Composições</span>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="project-preview">NATUREZA MORTA</div>
+            <h4>Natureza Morta</h4>
+            <p>Fotografias de objetos e naturezas mortas.</p>
+            <div class="project-tech">
+              <span>Objetos</span>
+              <span>Still Life</span>
+              <span>Composição</span>
+            </div>
+          </div>
+          <div class="project-item">
+            <div class="project-preview">EXPOSIÇÃO</div>
+            <h4>Fotos de Exposição</h4>
+            <p>Registos de exposições e eventos artísticos.</p>
+            <div class="project-tech">
+              <span>Exposições</span>
+              <span>Eventos</span>
+              <span>Documentação</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal APPS -->
+  <div id="modal-skills" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Apps</h2>
+        <span class="modal-close" data-modal="skills">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="skills-section">
+          <h4>Software de Design e Edição</h4>
+          <div class="apps-grid">
+            <div class="app-item">
+              <div class="app-icon">🎨</div>
+              <h4>Photoshop</h4>
+              <p>Edição de imagens e design gráfico</p>
+            </div>
+            <div class="app-item">
+              <div class="app-icon">✂️</div>
+              <h4>Affinity</h4>
+              <p>Design engloba várias apps numa</p>
+            </div>
+            <div class="app-item">
+              <div class="app-icon">🎬</div>
+              <h4>DaVinci Resolve</h4>
+              <p>Edição de vídeo e pós-produção</p>
+            </div>
+            <div class="app-item">
+              <div class="app-icon">📐</div>
+              <h4>Illustrator</h4>
+              <p>Design vetorial e ilustrações</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="skills-section">
+          <h4>Níveis de Proficiência</h4>
+          <div class="skill-item">
+            <span>Photoshop</span>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="85"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span>Affinity</span>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="80"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span>DaVinci Resolve</span>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="75"></div>
+            </div>
+          </div>
+          <div class="skill-item">
+            <span>Illustrator</span>
+            <div class="skill-bar">
+              <div class="skill-progress" data-progress="70"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal CONTACTOS -->
+  <div id="modal-contactos" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Contactos</h2>
+        <span class="modal-close" data-modal="contactos">&times;</span>
+      </div>
+      <div class="modal-body">
+        <div class="contact-section">
+          <h4>Mensagens</h4>
+          <p>para a realização de trabalhos/eventos/projetos...</p>
+          
+          <form class="contact-form">
+            <div class="form-group">
+              <input type="text" placeholder="Nome" required>
+            </div>
+            <div class="form-group">
+              <input type="email" placeholder="Email" required>
+            </div>
+            <div class="form-group">
+              <textarea placeholder="Mensagem" rows="4" required></textarea>
+            </div>
+            <button type="submit" class="submit-btn">Enviar Mensagem</button>
+          </form>
+        </div>
+
+        <div class="social-section">
+          <h4>Redes Sociais</h4>
+          <div class="social-links">
+            <a href="https://github.com/dianasilv7" class="social-link">GitHub</a>
+            <a href="https://www.instagram.com/shotsbydiana_/" class="social-link">Instagram</a>
+            <a href="https://www.tiktok.com/@shotsbydiana_" class="social-link">TikTok</a>
+            <a href="#" class="social-link">LinkedIn</a> 
+          </div>
+        </div>
+
+        <div class="direct-contact">
+          <h4>Contacto Direto</h4>
+          <div class="contact-info">
+            <p>📧 dianasilva.pt.12@gmail.com</p>
+            <p>📱 +351 932 448 201</p>
+            <p>📍 Portugal</p>
+          </div>
+        </div>
+
+        <div class="websites-section">
+          <h4>Links(Websites)</h4>
+          <div class="websites-links">
+            <a href="https://dianasilv7.github.io/exercicioaula3/" class="website-link" target="_blank">
+              <span class="website-icon">🖼️</span>
+              <div class="website-info">
+                <h5>Galeria</h5>
+                <p>Portfólio Fotográfico</p>
+              </div>
+            </a>
+            <a href="https://dianasilv7.github.io/thenotebook/" class="website-link" target="_blank">
+              <span class="website-icon">🎬</span>
+              <div class="website-info">
+                <h5>The Notebook</h5>
+                <p>Site promocional de um filme</p>
+              </div>
+            </a>
+            <a href="https://dianasilv7.github.io/exerc-cio-aula-cam/" class="website-link" target="_blank">
+              <span class="website-icon">🌐</span>
+              <div class="website-info">
+                <h5>Primeiro Site</h5>
+                <p>Primeiro projeto de programação</p>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 
   <!-- JavaScript externo -->
   <script src="script.js"></script>
+
 </body>
 </html>
