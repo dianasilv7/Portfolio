@@ -348,14 +348,14 @@ function changeLanguage(lang) {
     eng: {
       // Títulos principais
       'portfolio-title': 'Portfolio',
-      'sobre-title': 'About Me',
+      'sobre-title': 'About',
       'contactos-title': 'Contact',
       'projetos-title': 'Gallery',
       'skills-title': 'Apps',
       
       // Descrições
       'portfolio-description': 'Website',
-      'sobre-description': 'More about me',
+      'sobre-description': 'About me',
       'contactos-description': 'Get in touch',
       'projetos-description': 'Photography',
       'skills-description': 'Competencies',
@@ -367,16 +367,12 @@ function changeLanguage(lang) {
       'modal-contactos-title': 'Contact',
       
       // Galeria - English translations when language toggle is active
-      'paisagem-title': 'LANDSCAPE',
       'paisagem-subtitle': 'Landscapes',
       'paisagem-description': 'Natural landscapes and urban scenery photography.',
-      'abstracao-title': 'ABSTRACTION',
       'abstracao-subtitle': 'Abstraction',
       'abstracao-description': 'Abstract photography and artistic compositions.',
-      'natureza-morta-title': 'STILL LIFE',
       'natureza-morta-subtitle': 'Still Life',
       'natureza-morta-description': 'Photography of objects and still life.',
-      'exposicao-title': 'EXHIBITION',
       'exposicao-subtitle': 'Exhibition Photos',
       'exposicao-description': 'Recording of exhibitions and artistic events.',
       
@@ -426,7 +422,7 @@ function changeLanguage(lang) {
       'name-label': 'Name:',
       'name-value': 'Diana Silva',
       'age-label': 'Age:',
-      'age-value': '18 years',
+      'age-value': '19 years',
       'location-label': 'Lives:',
       'location-value': 'Porto',
       'languages-label': 'Speaks:',
