@@ -1,4 +1,21 @@
 // ==================== BOOT SEQUENCE ====================
+let currentLanguage = 'pt';
+
+const statusMessages = {
+  pt: {
+    formAlert: 'Por favor, preencha todos os campos.',
+    sendingText: 'Enviando...',
+    successMessage: 'Mensagem enviada com sucesso! Obrigada pelo contacto.',
+    featureNotAvailable: 'Esta funcionalidade ainda não está disponível'
+  },
+  eng: {
+    formAlert: 'Please fill in all fields.',
+    sendingText: 'Sending...',
+    successMessage: 'Message sent successfully! Thank you for contacting.',
+    featureNotAvailable: 'This feature is not yet available'
+  }
+};
+
 window.addEventListener('DOMContentLoaded', function() {
   const bootScreen = document.getElementById('boot-screen');
   const loginScreen = document.getElementById('login-screen');
@@ -21,7 +38,6 @@ window.addEventListener('DOMContentLoaded', function() {
 function loginUser() {
   const loginScreen = document.getElementById('login-screen');
   const desktop = document.getElementById('desktop');
-  const passwordInput = document.getElementById('passwordInput');
   
   // Qualquer tecla faz login (simulação)
   loginScreen.classList.add('fade-out');
@@ -140,25 +156,6 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-
-  // Adicionar animações de fechamento ao CSS dinamicamente
-  const style = document.createElement('style');
-  style.textContent = `
-    @keyframes windowClose {
-      to {
-        opacity: 0;
-        transform: scale(0.8);
-      }
-    }
-    
-    @keyframes windowMinimize {
-      to {
-        opacity: 0;
-        transform: scale(0.1) translateY(500px);
-      }
-    }
-  `;
-  document.head.appendChild(style);
 });
 
 // ==================== DOCK INTERACTIONS ====================
@@ -167,36 +164,36 @@ document.addEventListener('DOMContentLoaded', function() {
   
   dockItems.forEach((item, index) => {
     item.addEventListener('click', function() {
+      // Skip language toggle
+      if (this.id === 'language-toggle') {
+        return;
+      }
+      
       // Remove active de todos
       dockItems.forEach(i => i.classList.remove('active'));
       
       // Adiciona active ao clicado
       this.classList.add('active');
       
-      const title = this.getAttribute('title');
-      
-      // Contacto - abre modal de contactos
-      if (title === 'Contacto') {
+      // Usar data attributes ao invés de title (que muda com tradução)
+      if (this.hasAttribute('data-dock-contact')) {
         openModal('contactos');
         return;
       }
       
-      // Sobre Mim - abre modal sobre
-      if (title === 'Sobre Mim') {
+      if (this.hasAttribute('data-dock-about')) {
         openModal('sobre');
         return;
       }
       
-      // Portfólio - mostra janela principal
-      if (title === 'Portfólio') {
+      if (this.hasAttribute('data-dock-portfolio')) {
         const window = document.getElementById('portfolio-window');
         window.style.display = 'block';
         window.style.animation = 'windowOpen 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
         return;
       }
       
-      // Galeria - abre modal projetos
-      if (title === 'Galeria') {
+      if (this.hasAttribute('data-dock-gallery')) {
         openModal('projetos');
         return;
       }
@@ -207,18 +204,19 @@ document.addEventListener('DOMContentLoaded', function() {
 // ==================== LANGUAGE TOGGLE ====================
 document.addEventListener('DOMContentLoaded', function() {
   const languageToggle = document.getElementById('language-toggle');
-  let currentLanguage = 'pt';
   
   if (languageToggle) {
     languageToggle.addEventListener('click', function() {
       // Alternar entre PT e ENG
       if (currentLanguage === 'pt') {
         currentLanguage = 'eng';
-        this.setAttribute('title', 'Switch Language');
+        this.textContent = 'PT';
+        this.setAttribute('title', 'Mudar para português');
         changeLanguage('eng');
       } else {
         currentLanguage = 'pt';
-        this.setAttribute('title', 'Change Language');
+        this.textContent = 'ENG';
+        this.setAttribute('title', 'Mudar para inglês');
         changeLanguage('pt');
       }
     });
@@ -226,18 +224,21 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 function changeLanguage(lang) {
+  currentLanguage = lang;
+  document.documentElement.lang = lang === 'eng' ? 'en' : 'pt';
+
   const texts = {
     pt: {
       // Títulos principais
       'portfolio-title': 'Portfólio',
-      'sobre-title': 'Sobre Mim',
-      'contactos-title': 'Contactos',
-      'projetos-title': 'Galeria',
-      'skills-title': 'Aplicações',
+      'sobre-title': 'SOBRE',
+      'contactos-title': 'CONTACTOS',
+      'projetos-title': 'GALERIA',
+      'skills-title': 'APPS',
       
       // Descrições
       'portfolio-description': 'Website',
-      'sobre-description': 'Mais sobre mim',
+      'sobre-description': 'Sobre mim',
       'contactos-description': 'Entrar em contacto',
       'projetos-description': 'Fotografias',
       'skills-description': 'Competências',
@@ -282,7 +283,6 @@ function changeLanguage(lang) {
       'affinity-description': 'Suite de design com múltiplas apps',
       'davinci-description': 'Edição de vídeo e pós-produção',
       'illustrator-description': 'Design vectorial e ilustrações',
-      'proficiency-title': 'Níveis de Proficiência',
       
       // Contactos
       'messages-title': 'Mensagens',
@@ -295,7 +295,7 @@ function changeLanguage(lang) {
       'direct-contact-title': 'Contacto Direto',
       
       // Websites
-      'websites-title': 'Websites',
+      'websites-title': 'Outros Websites',
       'galeria-site-title': 'Galeria',
       'galeria-site-description': 'Portfólio de Fotografia',
       'notebook-site-title': 'The Notebook',
@@ -308,14 +308,14 @@ function changeLanguage(lang) {
       'name-label': 'Nome:',
       'name-value': 'Diana Silva',
       'age-label': 'Idade:',
-      'age-value': '18 anos',
+      'age-value': '19 anos',
       'location-label': 'Localização:',
       'location-value': 'Porto',
       'languages-label': 'Línguas:',
       'languages-value': 'Português e Inglês',
       'interests-label': 'Interesses:',
-      'interests-text': 'Edição, Viajar, Ouvir música, Tirar fotos',
-      'education-title': 'Actualmente a Frequentar',
+      'interests-text': 'Edição, Viagens, Música, Fotografia',
+      'education-title': 'Atualmente a Frequentar',
       'university-name': 'Universidade Lusófona',
       'university-period': '2025 - Presente',
       'university-course': 'Curso de Comunicação Audiovisual e Multimédia',
@@ -330,35 +330,37 @@ function changeLanguage(lang) {
       'davinci-span': 'DaVinci Resolve',
       'illustrator-span': 'Illustrator',
       
-      // Websites
-      'websites-title': 'Outros Websites',
-      
       // Atributos alt das imagens - MANTER SEMPRE EM PORTUGUÊS
       'alt-paisagem': 'Paisagem',
       'alt-abstracao': 'Abstração',
       'alt-natureza-morta': 'Natureza Morta',
       'alt-exposicao': 'Exposição',
       
-      // Alertas
-      'form-alert': 'Por favor, preencha todos os campos.',
-      'sending-text': 'Enviando...',
-      'success-message': 'Mensagem enviada com sucesso! Obrigada pelo contacto.',
-      'feature-not-available': 'Esta funcionalidade ainda não está disponível'
+      // Dock items
+      'dock-portfolio': 'Portfólio',
+      'dock-contact': 'Contacto',
+      'dock-gallery': 'Galeria',
+      'dock-about': 'Sobre Mim',
+      'language-toggle': 'ENG',
+      
+      // Window title
+      'window-title': 'Portfólio — Diana Silva',
+      'menu-portfolio': 'Portfólio'
     },
     eng: {
       // Títulos principais
       'portfolio-title': 'Portfolio',
-      'sobre-title': 'About',
-      'contactos-title': 'Contact',
-      'projetos-title': 'Gallery',
-      'skills-title': 'Apps',
+      'sobre-title': 'ABOUT',
+      'contactos-title': 'CONTACT',
+      'projetos-title': 'GALLERY',
+      'skills-title': 'APPS',
       
       // Descrições
       'portfolio-description': 'Website',
       'sobre-description': 'About me',
       'contactos-description': 'Get in touch',
       'projetos-description': 'Photography',
-      'skills-description': 'Competencies',
+      'skills-description': 'Skills',
       
       // Títulos dos modais
       'modal-sobre-title': 'About Me',
@@ -367,12 +369,16 @@ function changeLanguage(lang) {
       'modal-contactos-title': 'Contact',
       
       // Galeria - English translations when language toggle is active
+      'paisagem-title': 'LANDSCAPE',
       'paisagem-subtitle': 'Landscapes',
       'paisagem-description': 'Natural landscapes and urban scenery photography.',
+      'abstracao-title': 'ABSTRACTION',
       'abstracao-subtitle': 'Abstraction',
       'abstracao-description': 'Abstract photography and artistic compositions.',
+      'natureza-morta-title': 'STILL LIFE',
       'natureza-morta-subtitle': 'Still Life',
       'natureza-morta-description': 'Photography of objects and still life.',
+      'exposicao-title': 'EXHIBITION',
       'exposicao-subtitle': 'Exhibition Photos',
       'exposicao-description': 'Recording of exhibitions and artistic events.',
       
@@ -385,7 +391,7 @@ function changeLanguage(lang) {
       'abstracao-composicoes': 'Compositions',
       'natureza-morta-objetos': 'Objects',
       'natureza-morta-tag': 'Still Life',
-      'natureza-morta-composition': 'Composition',
+      'natureza-morta-composicao': 'Composition',
       'exposicao-exposicoes': 'Exhibitions',
       'exposicao-eventos': 'Events',
       'exposicao-documentacao': 'Documentation',
@@ -396,7 +402,6 @@ function changeLanguage(lang) {
       'affinity-description': 'Design suite with multiple apps',
       'davinci-description': 'Video editing and post-production',
       'illustrator-description': 'Vector design and illustrations',
-      'proficiency-title': 'Proficiency Levels',
       
       // Contactos
       'messages-title': 'Messages',
@@ -409,7 +414,7 @@ function changeLanguage(lang) {
       'direct-contact-title': 'Direct Contact',
       
       // Websites
-      'websites-title': 'Websites',
+      'websites-title': 'Other Websites',
       'galeria-site-title': 'Gallery',
       'galeria-site-description': 'Photography Portfolio',
       'notebook-site-title': 'The Notebook',
@@ -444,20 +449,28 @@ function changeLanguage(lang) {
       'davinci-span': 'DaVinci Resolve',
       'illustrator-span': 'Illustrator',
       
-      // Websites
-      'websites-title': 'Other Websites',
+      // Dock items
+      'dock-portfolio': 'Portfolio',
+      'dock-contact': 'Contact',
+      'dock-gallery': 'Gallery',
+      'dock-about': 'About',
+      'language-toggle': 'PT',
+      
+      // Window title
+      'window-title': 'Portfolio — Diana Silva',
+      'menu-portfolio': 'Portfolio',
+      
+      // Image alt attributes
+      'alt-paisagem': 'Landscape',
+      'affinity-span': 'Affinity',
+      'davinci-span': 'DaVinci Resolve',
+      'illustrator-span': 'Illustrator',
       
       // Image alt attributes - English translations when language toggle is active
       'alt-paisagem': 'Landscape',
       'alt-abstracao': 'Abstraction',
       'alt-natureza-morta': 'Still Life',
-      'alt-exposicao': 'Exhibition',
-      
-      // Alertas
-      'form-alert': 'Please fill in all fields.',
-      'sending-text': 'Sending...',
-      'success-message': 'Message sent successfully! Thank you for contacting.',
-      'feature-not-available': 'This feature is not yet available'
+      'alt-exposicao': 'Exhibition'
     }
   };
   
@@ -471,10 +484,15 @@ function changeLanguage(lang) {
   // Atualizar títulos e conteúdo dos modais
   const currentTexts = texts[lang];
   Object.keys(currentTexts).forEach(key => {
-    const element = document.querySelector(`[data-${key}]`);
-    if (element) {
-      element.textContent = currentTexts[key];
-    }
+    document.querySelectorAll(`[data-${key}]`).forEach(element => {
+      if (element.hasAttribute('placeholder')) {
+        element.setAttribute('placeholder', currentTexts[key]);
+      } else if (element.hasAttribute('title')) {
+        element.setAttribute('title', currentTexts[key]);
+      } else {
+        element.textContent = currentTexts[key];
+      }
+    });
   });
   
   // Atualizar atributos alt das imagens
@@ -486,30 +504,11 @@ function changeLanguage(lang) {
       }
     }
   });
-  
-  // Atualizar títulos dos modais diretamente
-  if (lang === 'eng') {
-    const sobreModal = document.querySelector('#modal-sobre h2');
-    const projetosModal = document.querySelector('#modal-projetos h2');
-    const skillsModal = document.querySelector('#modal-skills h2');
-    const contactosModal = document.querySelector('#modal-contactos h2');
-    
-    if (sobreModal) sobreModal.textContent = 'About Me';
-    if (projetosModal) projetosModal.textContent = 'Photography';
-    if (skillsModal) skillsModal.textContent = 'Apps';
-    if (contactosModal) contactosModal.textContent = 'Contact';
-  } else {
-    const sobreModal = document.querySelector('#modal-sobre h2');
-    const projetosModal = document.querySelector('#modal-projetos h2');
-    const skillsModal = document.querySelector('#modal-skills h2');
-    const contactosModal = document.querySelector('#modal-contactos h2');
-    
-    if (sobreModal) sobreModal.textContent = 'Sobre Mim';
-    if (projetosModal) projetosModal.textContent = 'Fotografias';
-    if (skillsModal) skillsModal.textContent = 'Aplicações';
-    if (contactosModal) contactosModal.textContent = 'Contactos';
-  }
 }
+
+window.addEventListener('DOMContentLoaded', function() {
+  changeLanguage(currentLanguage);
+});
 
 // ==================== MENU BAR INTERACTIONS ====================
 document.addEventListener('DOMContentLoaded', function() {
@@ -651,20 +650,12 @@ document.addEventListener('DOMContentLoaded', function() {
     contactForm.addEventListener('submit', function(e) {
       e.preventDefault();
       
-      // Get form data
-      const formData = new FormData(this);
       const name = this.querySelector('input[type="text"]').value;
       const email = this.querySelector('input[type="email"]').value;
       const message = this.querySelector('textarea').value;
       
-      // Simple validation
-      const currentLang = document.querySelector('#language-toggle') ? 
-        (document.querySelector('#language-toggle').getAttribute('title') === 'Switch Language' ? 'eng' : 'pt') : 'pt';
-      
       if (!name || !email || !message) {
-        const alertText = currentLang === 'eng' ? 
-          'Please fill in all fields.' : 'Por favor, preencha todos os campos.';
-        alert(alertText);
+        alert(statusMessages[currentLanguage].formAlert);
         return;
       }
       
@@ -672,16 +663,11 @@ document.addEventListener('DOMContentLoaded', function() {
       const submitBtn = this.querySelector('.submit-btn');
       const originalText = submitBtn.textContent;
       
-      const sendingText = currentLang === 'eng' ? 
-        'Sending...' : 'Enviando...';
-      submitBtn.textContent = sendingText;
+      submitBtn.textContent = statusMessages[currentLanguage].sendingText;
       submitBtn.disabled = true;
       
       setTimeout(() => {
-        const successText = currentLang === 'eng' ? 
-          'Message sent successfully! Thank you for contacting.' : 
-          'Mensagem enviada com sucesso! Obrigada pelo contacto.';
-        alert(successText);
+        alert(statusMessages[currentLanguage].successMessage);
         this.reset();
         submitBtn.textContent = originalText;
         submitBtn.disabled = false;
@@ -764,18 +750,6 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
-// Add ripple animation to CSS
-const style = document.createElement('style');
-style.textContent = `
-  @keyframes ripple {
-    to {
-      transform: scale(2);
-      opacity: 0;
-    }
-  }
-`;
-document.head.appendChild(style);
-
 // ==================== SOCIAL LINKS ALERTS ====================
 // Adicionar alertas para LinkedIn e TikTok
 document.addEventListener('DOMContentLoaded', function() {
@@ -787,13 +761,12 @@ document.addEventListener('DOMContentLoaded', function() {
       const linkText = this.textContent.trim();
       
       // LinkedIn e TikTok mostram alerta
-      if (linkText === 'LinkedIn' || linkText === 'Tiktok') {
+      if (linkText === 'LinkedIn' || linkText === 'TikTok') {
         e.preventDefault();
-        alert('Esta funcionalidade ainda não está disponível');
+        alert(statusMessages[currentLanguage].featureNotAvailable);
       }
       // GitHub e Instagram funcionam normalmente
       // (não fazer nada, deixa seguir o href)
     });
   });
 });
-

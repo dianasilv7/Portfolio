@@ -78,7 +78,7 @@
     <div class="menu-bar">
       <div class="menu-left">
         <span class="menu-item logo-text">DS</span>
-        <span class="menu-item active">Portfólio</span>
+        <span class="menu-item active" data-menu-portfolio>Portfólio</span>
         <span class="menu-item"></span>
         <span class="menu-item"></span>
         <span class="menu-item"></span>
@@ -98,7 +98,7 @@
             <span class="control minimize"></span>
             <span class="control maximize"></span>
           </div>
-          <div class="window-title">Portfólio — Diana Silva</div>
+          <div class="window-title" data-window-title>Portfólio — Diana Silva</div>
           <div class="window-spacer"></div>
         </div>
         <div class="window-content">
@@ -131,12 +131,12 @@
 
     <!-- Dock -->
     <div class="dock">
-      <div class="dock-item active" title="Portfólio">💼</div>
-      <div class="dock-item" title="Contacto">📞</div>
-      <div class="dock-item" title="Galeria">📸</div>
+      <div class="dock-item active" title="Portfólio" data-dock-portfolio>💼</div>
+      <div class="dock-item" title="Contacto" data-dock-contact>📞</div>
+      <div class="dock-item" title="Galeria" data-dock-gallery>📸</div>
       <div class="dock-separator"></div>
-      <div class="dock-item" id="language-toggle" title="Mudar Idioma">🌐</div>
-      <div class="dock-item" title="Sobre Mim">👤</div>
+      <div class="dock-item" id="language-toggle" title="Mudar para inglês" data-language-toggle>ENG</div>
+      <div class="dock-item" title="Sobre Mim" data-dock-about>👤</div>
     </div>
   </div>
 
@@ -156,7 +156,7 @@
           <div class="profile-info">
             <h3>Diana Silva</h3>
             <p class="profile-title" data-profile-title>Estudante Universitária</p>
-            <p class="profile-description" data-profile-description>
+            <p class="profile-description">
               <strong data-name-label>Nome:</strong> <span data-name-value>Diana Silva</span><br>
               <strong data-age-label>Idade:</strong> <span data-age-value>19 anos</span><br>
               <strong data-location-label>Localização:</strong> <span data-location-value>Porto</span><br>
@@ -192,9 +192,9 @@
       <div class="modal-body">
         <div class="projects-grid">
           <div class="project-item">
-            <div class="project-preview" data-paisagem-title>
+            <div class="project-preview">
               <img src="img/paisagem.JPG" alt="Paisagem" data-alt-paisagem="Paisagem" class="project-image">
-              <div class="project-title-overlay">PAISAGEM</div>
+              <div class="project-title-overlay" data-paisagem-title>PAISAGEM</div>
             </div>
             <h4 data-paisagem-subtitle>Paisagens</h4>
             <p data-paisagem-description>Fotografias de paisagens naturais e cenário urbano.</p>
@@ -205,9 +205,9 @@
             </div>
           </div>
           <div class="project-item">
-            <div class="project-preview" data-abstracao-title>
+            <div class="project-preview">
               <img src="img/lights.JPG" alt="Abstração" data-alt-abstracao="Abstração" class="project-image">
-              <div class="project-title-overlay">ABSTRAÇÃO</div>
+              <div class="project-title-overlay" data-abstracao-title>ABSTRAÇÃO</div>
             </div>
             <h4 data-abstracao-subtitle>Abstração</h4>
             <p data-abstracao-description>Fotografias abstratas e composições artísticas.</p>
@@ -218,9 +218,9 @@
             </div>
           </div>
           <div class="project-item">
-            <div class="project-preview" data-natureza-morta-title>
+            <div class="project-preview">
               <img src="img/bilhar.jpeg" alt="Natureza Morta" data-alt-natureza-morta="Natureza Morta" class="project-image">
-              <div class="project-title-overlay">NATUREZA MORTA</div>
+              <div class="project-title-overlay" data-natureza-morta-title>NATUREZA MORTA</div>
             </div>
             <h4 data-natureza-morta-subtitle>Natureza Morta</h4>
             <p data-natureza-morta-description>Fotografias de objetos e natureza morta.</p>
@@ -231,9 +231,9 @@
             </div>
           </div>
           <div class="project-item">
-            <div class="project-preview" data-exposicao-title>
+            <div class="project-preview">
               <img src="img/exp.JPG" alt="Exposição" data-alt-exposicao="Exposição" class="project-image">
-              <div class="project-title-overlay">EXPOSIÇÃO</div>
+              <div class="project-title-overlay" data-exposicao-title>EXPOSIÇÃO</div>
             </div>
             <h4 data-exposicao-subtitle>Fotos de Exposições</h4>
             <p data-exposicao-description>Registo de exposições e eventos artísticos.</p>
@@ -252,7 +252,7 @@
   <div id="modal-skills" class="modal">
     <div class="modal-content">
       <div class="modal-header">
-        <h2 data-modal-skills-title>Aplicações</h2>
+        <h2 data-modal-skills-title>Apps</h2>
         <span class="modal-close" data-modal="skills">&times;</span>
       </div>
       <div class="modal-body">
@@ -265,7 +265,7 @@
               <p data-apps-description>Edição de imagens e design gráfico</p>
             </div>
             <div class="app-item">
-              <div class="app-icon">✂️</div>
+              <div class="app-icon">🗂️</div>
               <h4>Affinity</h4>
               <p data-affinity-description>Suite de design com múltiplas apps</p>
             </div>
@@ -275,7 +275,7 @@
               <p data-davinci-description>Edição de vídeo e pós-produção</p>
             </div>
             <div class="app-item">
-              <div class="app-icon">📐</div>
+              <div class="app-icon">✏️</div>
               <h4>Illustrator</h4>
               <p data-illustrator-description>Design vectorial e ilustrações</p>
             </div>
@@ -285,7 +285,7 @@
         <div class="skills-section">
           <h4 data-proficiency-title>Níveis de Proficiência</h4>
           <div class="skill-item">
-            <span data-DaVinci-span>DaVinci Resolve</span>
+            <span data-davinci-span>DaVinci Resolve</span>
             <div class="skill-bar">
               <div class="skill-progress" data-progress="85"></div>
             </div>
@@ -297,7 +297,7 @@
             </div>
           </div>
           <div class="skill-item">
-            <span data-Photoshop-span>Photoshop</span>
+            <span data-photoshop-span>Photoshop</span>
             <div class="skill-bar">
               <div class="skill-progress" data-progress="75"></div>
             </div>
@@ -342,10 +342,10 @@
         <div class="social-section">
           <h4 data-social-title>Redes Sociais</h4>
           <div class="social-links">
-            <a href="https://github.com/dianasilv7" class="social-link">GitHub</a>
-            <a href="https://www.instagram.com/shotby.diana_/" class="social-link">Instagram</a>
-            <a href="https://www.tiktok.com/@shotsbydiana_" class="social-link">TikTok</a>
-            <a href="#" class="social-link">LinkedIn</a> 
+            <a href="https://github.com/dianasilv7" class="social-link" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.instagram.com/shotby.diana_/" class="social-link" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.tiktok.com/@shotsbydiana_" class="social-link" target="_blank" rel="noopener noreferrer">TikTok</a>
+            <a href="#" class="social-link" target="_blank" rel="noopener noreferrer">LinkedIn</a> 
           </div>
         </div>
 
@@ -361,21 +361,21 @@
         <div class="websites-section">
           <h4 data-websites-title>Outros Websites</h4>
           <div class="websites-links">
-            <a href="https://dianasilv7.github.io/exercicioaula3/" class="website-link" target="_blank">
+            <a href="https://dianasilv7.github.io/exercicioaula3/" class="website-link" target="_blank" rel="noopener noreferrer">
               <span class="website-icon">🖼️</span>
               <div class="website-info">
                 <h5 data-galeria-site-title>Galeria</h5>
                 <p data-galeria-site-description>Portfólio de Fotografia</p>
               </div>
             </a>
-            <a href="https://dianasilv7.github.io/thenotebook/" class="website-link" target="_blank">
+            <a href="https://dianasilv7.github.io/thenotebook/" class="website-link" target="_blank" rel="noopener noreferrer">
               <span class="website-icon">🎬</span>
               <div class="website-info">
                 <h5 data-notebook-site-title>The Notebook</h5>
                 <p data-notebook-site-description>Website promocional para um filme</p>
               </div>
             </a>
-            <a href="https://dianasilv7.github.io/exerc-cio-aula-cam/" class="website-link" target="_blank">
+            <a href="https://dianasilv7.github.io/exerc-cio-aula-cam/" class="website-link" target="_blank" rel="noopener noreferrer">
               <span class="website-icon">🌐</span>
               <div class="website-info">
                 <h5 data-first-site-title>Primeiro Site</h5>

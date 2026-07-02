@@ -517,6 +517,12 @@ body {
   position: relative;
 }
 
+#language-toggle {
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
 .dock-item:hover {
   transform: translateY(-10px) scale(1.2);
 }
@@ -854,6 +860,13 @@ body {
   }
 }
 
+@keyframes ripple {
+  to {
+    transform: scale(2);
+    opacity: 0;
+  }
+}
+
 /* ==================== APPS ==================== */
 .apps-grid {
   display: grid;
@@ -963,7 +976,8 @@ body {
 }
 
 .social-section h4,
-.direct-contact h4 {
+.direct-contact h4,
+.websites-section h4 {
   font-size: 18px;
   font-weight: 600;
   color: #1d1d1f;
@@ -1000,10 +1014,6 @@ body {
 
 /* ==================== WEBSITES SECTION ==================== */
 .websites-section h4 {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1d1d1f;
-  margin-bottom: 16px;
   margin-top: 24px;
 }
 
